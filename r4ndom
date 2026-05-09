@@ -1,0 +1,118 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Ateu Putik Sayang</title>
+    <style>
+        body {
+            background-color: #ffe4e1; /* Misty Rose */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            transition: background-color 0.5s ease;
+        }
+
+        .container {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+            border: 3px solid #ff69b4;
+            max-width: 85%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #d63384;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            font-size: 28px;
+        }
+
+        .sub-text {
+            color: #ff69b4;
+            font-size: 16px;
+            margin-top: 15px;
+            font-style: italic;
+            display: none; /* Sembunyi di awal */
+        }
+
+        .heart {
+            color: #ff69b4;
+            font-size: 60px;
+            margin-bottom: 15px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart" id="emoji">❤️</div>
+        <h1 id="textDisplay">halo ateu putik sayang, cantik, gemoy, imut</h1>
+        <button id="mainButton" onclick="handleUpdate()">Klik</button>
+        <div id="extraInfo" class="sub-text">disuruh bunda bikin ini</div>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        const maxClicks = 10;
+        const textDisplay = document.getElementById('textDisplay');
+        const mainButton = document.getElementById('mainButton');
+        const extraInfo = document.getElementById('extraInfo');
+        const emoji = document.getElementById('emoji');
+
+        function handleUpdate() {
+            clickCount++;
+
+            if (clickCount < maxClicks) {
+                // Menambah kata "lagi" di tombol setiap kali klik
+                let extraWords = " lagi".repeat(clickCount);
+                mainButton.innerText = "Klik" + extraWords;
+            } else {
+                // Tampilan Halaman Terakhir (Klik ke-10)
+                textDisplay.innerHTML = "bunda susah bab katanya";
+                emoji.innerHTML = "💩❤️"; // Ganti emoji biar lucu
+                extraInfo.style.display = "block"; // Munculkan tulisan kecil
+                mainButton.style.display = "none"; // Sembunyikan tombol
+                document.body.style.backgroundColor = "#ffc0cb"; // Ganti warna background
+            }
+        }
+    </script>
+
+</body>
+</html>
